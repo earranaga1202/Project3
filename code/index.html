@@ -46,9 +46,11 @@
 
     // var balloons = [];
     //making a two dimensional array for our grid of balloons
-    let balloons = Array.from(Array(10), () => new Array(10));
+    let balloons = Array.from(Array(11), () => new Array(11));
     //in order to add numbers to our balloons
     let count = 0;
+    let width = 10;
+    let height = 10;
     let d = getRandomArbitrary(0, 19);
     let p = getRandomArbitrary(0, 13);
     let v = getRandomArbitrary(0, 7);
@@ -56,6 +58,7 @@
 
     //will create all the balloons that we must seek through
     generateBalloonNetwork();
+    printBallonNetwork();
 
 
     // let bot = new Bot();
@@ -86,15 +89,32 @@
 
     //we are generating balloons
     function generateBalloonNetwork() {
-        for (let i = 0; i < 10; i++) {
-            for (let o = 0; o < 10; o++) {
-                count++;
+        //adding the starting balloon
+
+
+        for (let i = 0; i < width; i++) {
+            for (let o = 0; o < height; o++) {
                 generateDPV();
                 balloons[i][o] = new Balloon(count, d, p, v);
+                count++;
                 d = 0; p = 0; v = 0;
                 // balloons.push(b);
+                // console.log("\n");
+                // console.log("Balloon " + balloons[i][o].getNumber() + ": \n" + balloons[i][o].printDPV() + "\n");
+            }
+        }
+        balloons[0][0] = new Balloon(0, 12, 0, 7);
+        // console.log("Balloon " + balloons[0][0].getNumber() + ": \n" + balloons[0][0].printDPV() + "\n");
+        //adding the last balloon to the network
+        balloons[width-1][height-1] = new Balloon(count, 3, 13, 3);
+    }
+    function printBallonNetwork(){
+        console.log("width: " + width + " height: " + height);
+        for (let k = 0; k < width; k++) {
+            for (let j = 0; j < height; j++) {
+                console.log("k: " + k + " j: " + j);
                 console.log("\n");
-                console.log("Balloon " + balloons[i][o].getNumber() + ": \n" + balloons[i][o].printDPV() + "\n");
+                console.log("Balloon " + balloons[k][j].getNumber() + ": \n" + balloons[k][j].printDPV() + "\n");
             }
         }
     }
