@@ -1,0 +1,103 @@
+<!--Filename: index.html-->
+<!--Description: this HTML file serves as the index of the webpage and our UI-->
+<!--Authors: Kevin Lopez-->
+<!--cwid: 889508465-->
+<!--email: kevinlopez8554@csu.fullerton.edu-->
+
+<!--Emiliano Arranaga-->
+<!--email: earranaga1202@csu.fullerton.edu-->
+<!--cwid: 888006756-->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Project 1</title>
+
+    <link href="../files/styles.css" rel="stylesheet">
+    <script src="Balloon.js"></script>
+    <script src="Bot.js"></script>
+
+
+</head>
+
+<body>
+
+<h1>Project 2</h1>
+
+<div id="columnContainer" class="row">
+    <div id="diveOne" class="column">
+        <canvas id="first" class="canvasItem"></canvas>
+    </div>
+    <div id="diveTwo" class="column">
+        <canvas id="second" class="canvasItem"></canvas>
+    </div>
+    <div id="diveThree" class="column">
+        <canvas id="third" class="canvasItem"></canvas>
+    </div>
+    <div id="diveFour" class="column">
+        <canvas id="fourth" class="canvasItem"></canvas>
+    </div>
+</div>
+</body>
+
+
+<script>
+    // import Balloon from './Balloon.js';
+
+    // var balloons = [];
+    //making a two dimensional array for our grid of balloons
+    let balloons = Array.from(Array(10), () => new Array(10));
+    //in order to add numbers to our balloons
+    let count = 0;
+    let d = getRandomArbitrary(0, 19);
+    let p = getRandomArbitrary(0, 13);
+    let v = getRandomArbitrary(0, 7);
+
+
+    //will create all the balloons that we must seek through
+    generateBalloonNetwork();
+
+
+    // let bot = new Bot();
+
+
+    function getRandomArbitrary(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+    }
+
+    function generateDPV() {
+        // console.log("inside generateDPV()");
+        // console.log("starting value combined: " + (d+p+v));
+        let flag = true;
+        while (flag) {
+            if ((d + p + v) !== 19) {
+                // console.log("DPV IS: " +  (d+p+v));
+                d = getRandomArbitrary(0, 19);
+                p = getRandomArbitrary(0, 13);
+                v = getRandomArbitrary(0, 7);
+            }
+            else if( (d+p+v) === 19){
+                flag = false;
+            }
+            // console.log("flag is " + flag);
+        }
+
+    }
+
+    //we are generating balloons
+    function generateBalloonNetwork() {
+        for (let i = 0; i < 10; i++) {
+            for (let o = 0; o < 10; o++) {
+                count++;
+                generateDPV();
+                balloons[i][o] = new Balloon(count, d, p, v);
+                d = 0; p = 0; v = 0;
+                // balloons.push(b);
+                console.log("\n");
+                console.log("Balloon " + balloons[i][o].getNumber() + ": \n" + balloons[i][o].printDPV() + "\n");
+            }
+        }
+    }
+
+</script>
+</html>
