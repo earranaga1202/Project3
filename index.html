@@ -13,9 +13,9 @@
 <head>
     <title>Project 1</title>
 
-    <link href="../files/styles.css" rel="stylesheet">
-    <script src="Balloon.js"></script>
-    <script src="Bot.js"></script>
+    <link href="files/styles.css" rel="stylesheet">
+    <script src="code/Balloon.js"></script>
+    <script src="code/Bot.js"></script>
 
 
 </head>
@@ -58,7 +58,7 @@
 
     //will create all the balloons that we must seek through
     generateBalloonNetwork();
-    printBallonNetwork();
+    printBalloonNetwork();
 
 
     // let bot = new Bot();
@@ -78,8 +78,7 @@
                 d = getRandomArbitrary(0, 19);
                 p = getRandomArbitrary(0, 13);
                 v = getRandomArbitrary(0, 7);
-            }
-            else if( (d+p+v) === 19){
+            } else if ((d + p + v) === 19) {
                 flag = false;
             }
             // console.log("flag is " + flag);
@@ -97,7 +96,9 @@
                 generateDPV();
                 balloons[i][o] = new Balloon(count, d, p, v);
                 count++;
-                d = 0; p = 0; v = 0;
+                d = 0;
+                p = 0;
+                v = 0;
                 // balloons.push(b);
                 // console.log("\n");
                 // console.log("Balloon " + balloons[i][o].getNumber() + ": \n" + balloons[i][o].printDPV() + "\n");
@@ -106,9 +107,10 @@
         balloons[0][0] = new Balloon(0, 12, 0, 7);
         // console.log("Balloon " + balloons[0][0].getNumber() + ": \n" + balloons[0][0].printDPV() + "\n");
         //adding the last balloon to the network
-        balloons[width-1][height-1] = new Balloon(count, 3, 13, 3);
+        balloons[width - 1][height - 1] = new Balloon(count, 3, 13, 3);
     }
-    function printBallonNetwork(){
+
+    function printBalloonNetwork() {
         console.log("width: " + width + " height: " + height);
         for (let k = 0; k < width; k++) {
             for (let j = 0; j < height; j++) {
