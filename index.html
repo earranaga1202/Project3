@@ -23,6 +23,8 @@
 <body>
 
 <h1>Project 3</h1>
+<div id = "printDiv">
+</div>
 
 <!--<div id="columnContainer" class="row">-->
 <!--    <div id="diveOne" class="column">-->
@@ -114,12 +116,29 @@
         console.log("width: " + width + " height: " + height);
         for (let k = 0; k < width; k++) {
             for (let j = 0; j < height; j++) {
-                console.log("k: " + k + " j: " + j);
-                console.log("\n");
-                console.log("Balloon " + balloons[k][j].getNumber() + ": \n" + balloons[k][j].printDPV() + "\n");
+                // console.log("k: " + k + " j: " + j);
+                // console.log("\n");
+                document.write("<br />");
+                // console.log("Balloon " + balloons[k][j].getNumber() + ": \n" + balloons[k][j].printDPV() + "\n");
+                // document.write(("k: " + k + " j: " + j).fontcolor("white"));
+                document.write("<br />");
+                document.write(("Balloon " + balloons[k][j].getNumber() + ": \n" + balloons[k][j].printDPV() + "\n").fontcolor("white"));
+                document.write("<br />");
+
             }
         }
     }
+
+
+
+    // function printToHTML(stringToPrint) {
+    //     let printContents = document.getElementById("printDiv").innerHTML;
+    //     let originalContents = document.body.innerHTML;
+    //     document.body.innerHTML = printContents;
+    //     window.print();
+    //     document.body.innerHTML = originalContents;
+    // }
+
 
 </script>
 </html>
