@@ -91,12 +91,12 @@
     //we are generating balloons
     function generateBalloonNetwork() {
         //adding the starting balloon
-
-
         for (let i = 0; i < width; i++) {
             for (let o = 0; o < height; o++) {
                 generateDPV();
-                balloons[i][o] = new Balloon(count, d, p, v);
+                // balloons[i][o] = new Balloon(count, d, p, v); //original code
+                let DPV =[d,p,v];
+                balloons[i][o] = new Balloon(count, DPV);
                 count++;
                 d = 0;
                 p = 0;
@@ -106,10 +106,12 @@
                 // console.log("Balloon " + balloons[i][o].getNumber() + ": \n" + balloons[i][o].printDPV() + "\n");
             }
         }
-        balloons[0][0] = new Balloon(0, 12, 0, 7);
+        let ABC = [12,0,7];
+        balloons[0][0] = new Balloon(0, ABC);
         // console.log("Balloon " + balloons[0][0].getNumber() + ": \n" + balloons[0][0].printDPV() + "\n");
         //adding the last balloon to the network
-        balloons[width - 1][height - 1] = new Balloon(count, 3, 13, 3);
+        let XYZ = [3,13,3];
+        balloons[width - 1][height - 1] = new Balloon(count, XYZ);
     }
 
     function printBalloonNetwork() {

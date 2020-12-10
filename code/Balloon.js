@@ -15,11 +15,14 @@ class Balloon {
     }
 
     getDPV() {
-        return this.d + " " + this.p + " " + this.v;
+        return this.DPVArray[0] + " " + this.DPVArray[1] + " " + this.DPVArray[3];
+        // return this.d + " " + this.p + " " + this.v;
     }
 
     printDPV() {
-        return "D:" + this.d + " \n" + "P:" + this.p + " \n" + "V:" + this.v;
+        // return this.DPVArray[0] + " " + this.DPVArray[1] + " " + this.DPVArray[3];
+
+        return "D:" + this.DPVArray[0] + " \n" + "P:" + this.DPVArray[1] + " \n" + "V:" + this.DPVArray[2];
     }
 
     //moveFromAtoB(a,b){
