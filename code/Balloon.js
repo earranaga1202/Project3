@@ -2,6 +2,7 @@ class Balloon {
     DPVArray = [];
     constructor(balloonNumber, DPV) {
         this.number = balloonNumber;
+        this.DPVArray = [];
         this.DPVArray = DPV;
     }
 
