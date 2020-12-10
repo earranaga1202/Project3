@@ -1,9 +1,8 @@
 class Balloon {
-    constructor(balloonNumber, D, P, V) {
+    DPVArray = [];
+    constructor(balloonNumber, DPV) {
         this.number = balloonNumber;
-        this.d = D;
-        this.p = P;
-        this.v = V;
+        this.DPVArray = DPV;
     }
 
     getNumber() {
